@@ -69,7 +69,8 @@ fun WelcomeContent() {
                         shape = RoundedCornerShape(50)
                     ),
                 label = "LOG IN",
-                type = ButtonType.SECONDARY
+                backgroundColor = Color.Transparent,
+                color = MaterialTheme.colors.primary,
             )
         }
     }
@@ -79,21 +80,22 @@ fun WelcomeContent() {
 fun WeTradeButton(
     modifier: Modifier = Modifier,
     label: String,
-    type: ButtonType = ButtonType.PRIMARY
+    backgroundColor: Color = MaterialTheme.colors.primary,
+    color: Color = MaterialTheme.colors.onPrimary
 ) {
     Button(
         modifier = modifier,
         onClick = {},
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (type == ButtonType.PRIMARY) MaterialTheme.colors.primary else Color.Transparent
+            backgroundColor = backgroundColor
         ),
         shape = RoundedCornerShape(50)
     ) {
         Text(
             text = label,
             style = MaterialTheme.typography.button,
-            color = if (type == ButtonType.PRIMARY) MaterialTheme.colors.onPrimary else MaterialTheme.colors.primary
+            color = color
         )
     }
 }
