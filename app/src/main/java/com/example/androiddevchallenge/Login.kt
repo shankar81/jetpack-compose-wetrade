@@ -1,29 +1,22 @@
 package com.example.androiddevchallenge
 
-import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 class Login : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +24,7 @@ class Login : ComponentActivity() {
         setContent {
             MyTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.onSurface) {
+                Surface(color = MaterialTheme.colors.surface) {
                     LoginContent()
                 }
             }
@@ -42,7 +35,7 @@ class Login : ComponentActivity() {
 @Composable
 fun LoginContent() {
     Column(modifier = Modifier.fillMaxSize()) {
-        LoginBackground(modifier = Modifier.weight(0.5F)) {
+        LoginBackground(modifier = Modifier.weight(0.6F)) {
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
@@ -58,7 +51,12 @@ fun LoginContent() {
                 )
             }
         }
-        LoginForm(modifier = Modifier.weight(0.5F))
+        LoginForm(
+            modifier = Modifier
+                .weight(0.4F)
+                .padding(16.dp)
+                .fillMaxSize()
+        )
     }
 }
 
@@ -77,8 +75,61 @@ fun LoginBackground(modifier: Modifier = Modifier, content: @Composable () -> Un
 
 @Composable
 fun LoginForm(modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
+    Column(
+        modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LoginInput(
+            onValueChange = {},
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.mail_outline),
+                    contentDescription = "Email"
+                )
+            },
+            placeholder = "Email address"
+        )
+        LoginInput(
+            onValueChange = {},
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.password),
+                    contentDescription = "Password"
+                )
+            },
+            placeholder = "Password",
+            visualTransformation = PasswordVisualTransformation()
+        )
+        WeTradeButton(label = "LOG IN", modifier = Modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth())
     }
+}
+
+@Composable
+fun LoginInput(
+    modifier: Modifier = Modifier,
+    value: String = "",
+    onValueChange: (String) -> Unit,
+    leadingIcon: @Composable () -> Unit,
+    placeholder: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+) {
+    OutlinedTextField(
+        modifier = modifier
+            .fillMaxWidth(),
+        value = value, onValueChange = onValueChange,
+        placeholder = {
+            Text(
+                text = placeholder,
+                style = MaterialTheme.typography.body1,
+                color = MaterialTheme.colors.onSurface
+            )
+        },
+        leadingIcon = leadingIcon,
+        visualTransformation = visualTransformation,
+    )
 }
 
 @Preview(showBackground = true)
