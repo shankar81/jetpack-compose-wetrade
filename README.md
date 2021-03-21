@@ -18,7 +18,7 @@ I made this app as a part of #AndroidDevChallenge week 3 using Jetpack Compose.
 
 ### :movie_camera: GIF
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/46323867/111898309-31589000-8a4b-11eb-9f1b-743a557c3f0d.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/46323867/111905870-e69f3e00-8a73-11eb-96c8-a9eb2e4d4d17.gif)
 
 ## License
 
