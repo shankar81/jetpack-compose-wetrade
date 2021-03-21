@@ -13,10 +13,10 @@ I made this app as a part of #AndroidDevChallenge week 3 using Jetpack Compose.
 ## :camera_flash: Screenshots
 
 ### Light Theme
-<img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">&emsp;<img src="/results/screenshot_3.png" width="260">
+<img src="/results/welcome_light.png" width="260">&emsp;<img src="/results/login_light.png" width="260">&emsp;<img src="/results/home_light.png" width="260">
 
 ### Dark Theme
-<img src="/results/drkscreenshot_1.png" width="260">&emsp;<img src="/results/drkscreenshot_2.png" width="260">&emsp;<img src="/results/drkscreenshot_3.png" width="260">
+<img src="/results/welcome_dark.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/home_dark.png" width="260">
 
 
 ## License
