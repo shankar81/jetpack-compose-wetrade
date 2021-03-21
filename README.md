@@ -18,6 +18,9 @@ I made this app as a part of #AndroidDevChallenge week 3 using Jetpack Compose.
 ### Dark Theme
 <img src="/results/welcome.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/home_dark.png" width="260">
 
+### :movie_camera: GIF
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/46323867/111898309-31589000-8a4b-11eb-9f1b-743a557c3f0d.gif)
 
 ## License
 
