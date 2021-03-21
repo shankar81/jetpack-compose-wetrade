@@ -1,7 +1,5 @@
 # We Trade
 
-![Workflow result](https://github.com/shankar81/jetpack-compose-wetrade/workflows/Check/badge.svg)
-
 ## :scroll: Description
 
 This is a trading application.
