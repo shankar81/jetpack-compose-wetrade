@@ -14,26 +14,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
 
-class Login : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.surface) {
-                    LoginContent()
-                }
-            }
-        }
+@Composable
+fun Login(navController: NavHostController) {
+    // A surface container using the 'background' color from the theme
+    Surface(color = MaterialTheme.colors.surface) {
+        LoginContent(navController)
     }
 }
 
 @Composable
-fun LoginContent() {
+fun LoginContent(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
         LoginBackground(modifier = Modifier.weight(0.6F)) {
             Row(
@@ -55,7 +49,8 @@ fun LoginContent() {
             modifier = Modifier
                 .weight(0.4F)
                 .padding(16.dp)
-                .fillMaxSize()
+                .fillMaxSize(),
+            navController
         )
     }
 }
@@ -74,7 +69,7 @@ fun LoginBackground(modifier: Modifier = Modifier, content: @Composable () -> Un
 }
 
 @Composable
-fun LoginForm(modifier: Modifier = Modifier) {
+fun LoginForm(modifier: Modifier = Modifier, navController: NavHostController) {
     Column(
         modifier,
         verticalArrangement = Arrangement.Center,
@@ -101,9 +96,12 @@ fun LoginForm(modifier: Modifier = Modifier) {
             placeholder = "Password",
             visualTransformation = PasswordVisualTransformation()
         )
-        WeTradeButton(label = "LOG IN", modifier = Modifier
-            .padding(top = 16.dp)
-            .fillMaxWidth())
+        WeTradeButton(
+            label = "LOG IN", modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth(),
+            onClick = { navController.navigate("Dashboard") }
+        )
     }
 }
 
@@ -130,12 +128,4 @@ fun LoginInput(
         leadingIcon = leadingIcon,
         visualTransformation = visualTransformation,
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    MyTheme {
-        LoginContent()
-    }
 }

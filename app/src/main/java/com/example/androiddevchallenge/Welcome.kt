@@ -1,9 +1,5 @@
 package com.example.androiddevchallenge
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,35 +9,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
 import dev.chrisbanes.accompanist.coil.CoilImage
 
-enum class ButtonType {
-    PRIMARY,
-    SECONDARY
-}
-
-class Welcome : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    WelcomeBackground {
-                        WelcomeContent()
-                    }
-                }
-            }
+@Composable
+fun Welcome(navController: NavHostController) {
+    // A surface container using the 'background' color from the theme
+    Surface(color = MaterialTheme.colors.background) {
+        WelcomeBackground {
+            WelcomeContent(navController)
         }
     }
 }
 
 
 @Composable
-fun WelcomeContent() {
+fun WelcomeContent(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -57,7 +42,8 @@ fun WelcomeContent() {
                 modifier = Modifier
                     .weight(0.5F)
                     .padding(end = 8.dp),
-                label = "GET STARTED"
+                label = "GET STARTED",
+                onClick = { }
             )
             WeTradeButton(
                 modifier = Modifier
@@ -71,6 +57,7 @@ fun WelcomeContent() {
                 label = "LOG IN",
                 backgroundColor = Color.Transparent,
                 color = MaterialTheme.colors.primary,
+                onClick = { navController.navigate("Login") }
             )
         }
     }
@@ -81,11 +68,12 @@ fun WeTradeButton(
     modifier: Modifier = Modifier,
     label: String,
     backgroundColor: Color = MaterialTheme.colors.primary,
-    color: Color = MaterialTheme.colors.onPrimary
+    color: Color = MaterialTheme.colors.onPrimary,
+    onClick: () -> Unit = { }
 ) {
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClick,
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = backgroundColor
@@ -124,13 +112,5 @@ fun WelcomeBackground(content: @Composable () -> Unit) {
             )
         }
         content()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MyTheme {
-        WelcomeContent()
     }
 }

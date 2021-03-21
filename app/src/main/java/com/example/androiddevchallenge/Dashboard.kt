@@ -103,48 +103,42 @@ val stocks = listOf(
     )
 )
 
-class Dashboard : ComponentActivity() {
-    @ExperimentalMaterialApi
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-                bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
-            )
-            val coroutineScope = rememberCoroutineScope()
-            MyTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    BottomSheetScaffold(
-                        sheetContent = {
-                            Text(
-                                text = "Positions",
-                                style = MaterialTheme.typography.subtitle1,
-                                color = MaterialTheme.colors.onSurface,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        coroutineScope.launch {
-                                            if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
-                                                bottomSheetScaffoldState.bottomSheetState.expand()
-                                            } else {
-                                                bottomSheetScaffoldState.bottomSheetState.collapse()
-                                            }
-                                        }
-                                    }
-                                    .padding(vertical = 24.dp)
-                            )
-                            BottomSheetContent()
-                        },
-                        sheetShape = RectangleShape,
-                        scaffoldState = bottomSheetScaffoldState,
-                        sheetPeekHeight = 80.dp,
-                    ) {
-                        DashboardContent()
-                    }
-                }
-            }
+@Composable
+@ExperimentalMaterialApi
+fun Dashboard() {
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
+    )
+    val coroutineScope = rememberCoroutineScope()
+    // A surface container using the 'background' color from the theme
+    Surface(color = MaterialTheme.colors.background) {
+        BottomSheetScaffold(
+            sheetContent = {
+                Text(
+                    text = "Positions",
+                    style = MaterialTheme.typography.subtitle1,
+                    color = MaterialTheme.colors.onSurface,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            coroutineScope.launch {
+                                if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
+                                    bottomSheetScaffoldState.bottomSheetState.expand()
+                                } else {
+                                    bottomSheetScaffoldState.bottomSheetState.collapse()
+                                }
+                            }
+                        }
+                        .padding(vertical = 24.dp)
+                )
+                BottomSheetContent()
+            },
+            sheetShape = RectangleShape,
+            scaffoldState = bottomSheetScaffoldState,
+            sheetPeekHeight = 80.dp,
+        ) {
+            DashboardContent()
         }
     }
 }
