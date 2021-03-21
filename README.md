@@ -1,10 +1,10 @@
-# My Soothe
+# We Trade
 
-![Workflow result](https://github.com/mal7othify/we-trade/workflows/Check/badge.svg)
+![Workflow result](https://github.com/shankar81/jetpack-compose-wetrade/workflows/Check/badge.svg)
 
 ## :scroll: Description
 
-This is a meditation application.
+This is a trading application.
 
 ## :bulb: Motivation and Context
 
@@ -13,10 +13,10 @@ I made this app as a part of #AndroidDevChallenge week 3 using Jetpack Compose.
 ## :camera_flash: Screenshots
 
 ### Light Theme
-<img src="/results/welcome_light.png" width="260">&emsp;<img src="/results/login_light.png" width="260">&emsp;<img src="/results/home_light.png" width="260">
+<img src="/results/welcome.png" width="260">&emsp;<img src="/results/login_light.png" width="260">&emsp;<img src="/results/home_light.png" width="260">
 
 ### Dark Theme
-<img src="/results/welcome_dark.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/home_dark.png" width="260">
+<img src="/results/welcome.png" width="260">&emsp;<img src="/results/login_dark.png" width="260">&emsp;<img src="/results/home_dark.png" width="260">
 
 
 ## License
